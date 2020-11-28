@@ -1,2 +1,8 @@
 
 .settings.toml
+
+build/
+
+src/rdl-bucket/__pycache__/
+
+dist/
