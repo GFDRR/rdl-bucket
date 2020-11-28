@@ -88,7 +88,7 @@ Use the pipe operator to export outputs if needed:
 
 ## Dev notes
 
-This tool users `pyinstaller` to create the single binary.
+This tool uses `pyinstaller` to create the single binary.
 
 ```bash
 > pyinstaller src/rdl-bucket/rdl-bucket.py --onefile
