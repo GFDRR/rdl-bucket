@@ -37,9 +37,6 @@ Options:
   --help                          Show this message and exit.
 
 Commands:
-  delete-examples  Special one-off command to remove example 'test.txt'      
-                   file...
-
   delete-file      Delete a single file in the datasets/data directory.      
   list-files       List all files in the `risk-data-library-storage` bucket. 
   upload-file      Upload a single file to AWS Bucket, under the...
