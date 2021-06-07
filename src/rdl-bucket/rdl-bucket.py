@@ -60,17 +60,25 @@ def download_file(filename: str):
 
 
 @app.command()
-def delete_file(filename: str):
+def delete_file(filename: str, bucket: str = "risk-data-library-storage"):
     """Delete a single file in the datasets/data directory."""
-    client.delete_object(Bucket='risk-data-library-storage', Key=f"datasets/data/{filename}")
+    if bucket == "risk-data-library-storage":
+        fn = f"datasets/data/{filename}"
+    else:
+        fn = filename
+    client.delete_object(Bucket=bucket, Key=fn)
 
 
 @app.command()
-def list_files():
+def list_files(bucket="risk-data-library-storage"):
     """List all files in the AWS Bucket."""
-    new_file_list = s3.Bucket('risk-data-library-storage')
+    # rdl-jkan-datasets
+    new_file_list = s3.Bucket(bucket)
+    
+    print("Filename, Filesize [MB]")
     for fn in new_file_list.objects.all():
-        print(fn)
+        f_size = round(fn.size / 1024 / 1024, 4)
+        print(f'"{fn.key}", {f_size}')
 
 
 if __name__ == '__main__':
